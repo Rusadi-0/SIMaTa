@@ -5,7 +5,7 @@
 
 
 // animasi css
-$animasi = '<link rel="stylesheet" href="css/animate.css">';
+$animasi = '';
 
 $jmlpagi = 15;
 date_default_timezone_set('Asia/Kuala_Lumpur');
@@ -72,15 +72,15 @@ function tambah($data) {
 	global $conn;
 
 
-	$nama = htmlspecialchars($data["nama1"]." ".$data["nama2"]." ".$data["nama3"]." ".$data["nama4"]." ".$data["nama5"]);
+	$nama = htmlspecialchars($data["nama"]);
 	$alamat = htmlspecialchars($data["alamat"]);
 	$ditemui = htmlspecialchars($data["ditemui"]);
 	$keperluan = htmlspecialchars($data["keperluan"]);
 	$tanggal = htmlspecialchars($data["tanggal"]);
-	$masuk = htmlspecialchars($data["masuk"]);
+	$masuk = date("h:i:s A",time());
 	// $keluar = htmlspecialchars($data["keluar"]);
 	$gambar= htmlspecialchars($data["gambar"]);
-	$telepon = htmlspecialchars($data["telepon"]);
+	// $telepon = htmlspecialchars($data["telepon"]);
 	// $nilai = htmlspecialchars($data["nilai"]);
 
 
@@ -94,10 +94,8 @@ function tambah($data) {
 	// 	return false;
 	// }
 
-	$query = "INSERT INTO tb_tamu
-				VALUES
-			  ('', '$nama', '$alamat', '$ditemui', '$keperluan', '$tanggal', '$masuk', '','$gambar','$telepon','')
-			";
+	$query = "INSERT INTO `tb_tamu` (`id`, `nama`, `alamat`, `ditemui`, `keperluan`, `tanggal`, `masuk`, `keluar`, `gambar`, `telepon`, `nilai`) VALUES 
+									(NULL, '$nama', '$alamat', '$ditemui', '$keperluan', '$tanggal', '$masuk', NULL, '$gambar', NULL, NULL);";
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);

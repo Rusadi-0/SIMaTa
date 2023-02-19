@@ -5,8 +5,8 @@ $layoutMenu = '
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="../home/" class="app-brand-link">
-              <img class="app-brand-logo demo shadow-sm rounded-circle" src="../bakso/assets/img/favicon/favicon.ico" alt="">
-              <span class="app-brand-text demo menu-text fw-bolder ms-3">SIMa<span class="text-primary">Ta</span></span>
+            <i style="font-size: 35px;" class="bx bxs-book-reader app-brand-logo demo"></i>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">SIMa<span class="text-primary">Ta</span></span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

@@ -16,6 +16,9 @@ $layoutHeader = '
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="../bakso/assets/img/favicon/favicon.ico" />
+  
+  <!-- Animasi -->
+  <link rel="stylesheet" href="../bakso/assets/css/animate.css">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

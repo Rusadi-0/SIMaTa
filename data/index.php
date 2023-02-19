@@ -11,7 +11,7 @@ require '../layouts/topbar.php';
 require '../layouts/footer.php';
 session_start();
 if (!isset($_SESSION["login"])) {
-  header("Location: ./home/");
+  header("Location: ../");
   exit;
 }
 echo $layoutHeader;

@@ -1,9 +1,5 @@
 <?php
 
-
-	
-
-
 // animasi css
 $animasi = '';
 
@@ -64,7 +60,7 @@ function nilai($data){
 	// 		  ('', '', '', '', '', '', '', '$keluar','','','$nilai')
 	// 		";
 	// mysqli_query($conn, $query);
-
+	
 	// return mysqli_affected_rows($conn);
 }
 
@@ -80,6 +76,7 @@ function tambah($data) {
 	$masuk = date("h:i:s A",time());
 	// $keluar = htmlspecialchars($data["keluar"]);
 	$gambar= htmlspecialchars($data["gambar"]);
+	$status= 0;
 	// $telepon = htmlspecialchars($data["telepon"]);
 	// $nilai = htmlspecialchars($data["nilai"]);
 
@@ -94,8 +91,8 @@ function tambah($data) {
 	// 	return false;
 	// }
 
-	$query = "INSERT INTO `tb_tamu` (`id`, `nama`, `alamat`, `ditemui`, `keperluan`, `tanggal`, `masuk`, `keluar`, `gambar`, `telepon`, `nilai`) VALUES 
-									(NULL, '$nama', '$alamat', '$ditemui', '$keperluan', '$tanggal', '$masuk', NULL, '$gambar', NULL, NULL);";
+	$query = "INSERT INTO `tb_tamu` (`id`, `nama`, `alamat`, `ditemui`, `keperluan`, `tanggal`, `masuk`, `keluar`, `gambar`, `telepon`, `nilai`, `status`) VALUES 
+									(NULL, '$nama', '$alamat', '$ditemui', '$keperluan', '$tanggal', '$masuk', NULL, '$gambar', NULL, NULL,'$status');";
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);

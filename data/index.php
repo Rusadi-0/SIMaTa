@@ -17,145 +17,145 @@ if (!isset($_SESSION["login"])) {
 echo $layoutHeader;
 echo $layoutMenu;
 echo $layoutTopbar;
+
+
+$query = "SELECT * FROM `tb_tamu` ORDER BY `id` DESC";
+$data = mysqli_query($conn, $query);
+echo $_SERVER['DOCUMENT_ROOT'];
 ?>
 <!-- Start Content -->
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Buku Tamu /</span> Data Kunjungan</h4>
-<div class="card">
-     <h5 class="card-header">Hoverable rows</h5>
-     <div class="table-responsive text-nowrap">
-       <table class="table table-hover">
-         <thead>
-           <tr>
-             <th>Project</th>
-             <th>Client</th>
-             <th>Users</th>
-             <th>Status</th>
-             <th>Actions</th>
-           </tr>
-         </thead>
-         <tbody class="table-border-bottom-0">
-           <tr>
-             <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
-             <td>Albert Cook</td>
-             <td>
-               <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                 </li>
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                 </li>
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                 </li>
-               </ul>
-             </td>
-             <td><span class="badge bg-label-primary me-1">Active</span></td>
-             <td>
-               <div class="dropdown">
-                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                   <i class="bx bx-dots-vertical-rounded"></i>
-                 </button>
-                 <div class="dropdown-menu">
-                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                 </div>
-               </div>
-             </td>
-           </tr>
-           <tr>
-             <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>React Project</strong></td>
-             <td>Barry Hunter</td>
-             <td>
-               <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                 </li>
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                 </li>
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                 </li>
-               </ul>
-             </td>
-             <td><span class="badge bg-label-success me-1">Completed</span></td>
-             <td>
-               <div class="dropdown">
-                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                   <i class="bx bx-dots-vertical-rounded"></i>
-                 </button>
-                 <div class="dropdown-menu">
-                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                 </div>
-               </div>
-             </td>
-           </tr>
-           <tr>
-             <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-             <td>Trevor Baker</td>
-             <td>
-               <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                 </li>
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                 </li>
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                 </li>
-               </ul>
-             </td>
-             <td><span class="badge bg-label-info me-1">Scheduled</span></td>
-             <td>
-               <div class="dropdown">
-                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                   <i class="bx bx-dots-vertical-rounded"></i>
-                 </button>
-                 <div class="dropdown-menu">
-                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                 </div>
-               </div>
-             </td>
-           </tr>
-           <tr>
-             <td>
-               <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Bootstrap Project</strong>
-             </td>
-             <td>Jerry Milton</td>
-             <td>
-               <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                 </li>
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                 </li>
-                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
-                   <img src="{{URL::to('/')}}/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                 </li>
-               </ul>
-             </td>
-             <td><span class="badge bg-label-warning me-1">Pending</span></td>
-             <td>
-               <div class="dropdown">
-                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                   <i class="bx bx-dots-vertical-rounded"></i>
-                 </button>
-                 <div class="dropdown-menu">
-                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                 </div>
-               </div>
-             </td>
-           </tr>
-         </tbody>
-       </table>
-     </div>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <h5 class="card-header">Hoverable rows</h5>
+      <div class="card-body">
+        <div class="table-responsive text-nowrap">
+          <table id="myTable" class="table table-hover table-striped table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">Aksi</th>
+                <th scope="col">status</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">ditemui</th>
+                <th scope="col">keperluan</th>
+                <th scope="col">tanggal</th>
+                <th scope="col">masuk</th>
+                <th scope="col">keluar</th>
+                <th scope="col">telepon</th>
+                <th scope="col">nilai</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($data as $d) : ?>
+                <tr>
+                  <td>
+                  <small style="opacity: 0;position: absolute;"><?=$d['status'];?></small>
+                    <div class="dropdown">
+                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                      <div class="dropdown-menu">
+                        <?php if ($d['status'] == 0) : ?>
+                          <a class="dropdown-item btn-outline-primary" href="../data/kirim/index.php?id=<?= $d["id"]; ?>"><i class='bx bx-send'></i> <strong>Kirim</strong></a>
+                          <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalTop<?= $d['id']; ?>"><i class='bx bx-show'></i> Lihat foto</a>
+                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Edit</a>
+                          <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#hapus<?= $d['id']; ?>"><i class="bx bx-trash me-1"></i>Hapus</a>
+                        <?php elseif ($d['status'] == 1) : ?>
+                          <a class="dropdown-item bg-label-warning" href="../data/ulang/index.php?id=<?= $d["id"]; ?>"><i class='bx bx-repeat'></i> <strong>Ulang</strong></a>
+                          <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalTop<?= $d['id']; ?>"><i class='bx bx-show'></i> Lihat foto</a>
+                        <?php elseif ($d['status'] == 2) : ?>
+                          <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalTop<?= $d['id']; ?>"><i class='bx bx-show'></i> Lihat foto</a>
+                        <?php elseif ($d['status'] == 3) : ?>
+                          <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalTop<?= $d['id']; ?>"><i class='bx bx-show'></i> Lihat foto</a>
+                        <?php else : ?>
+                          <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalTop<?= $d['id']; ?>"><i class='bx bx-show'></i> Lihat foto</a>
+                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Edit</a>
+                          <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#hapus<?= $d['id']; ?>"><i class="bx bx-trash me-1"></i>Hapus</a>
+                        <?php endif; ?>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+
+                    <?php
+
+                    if ($d['status'] == 0) {
+                      echo '<span class="badge bg-label-info me-1">baru</span>';
+                    }
+                    if ($d['status'] == 1) {
+                      echo '<span class="badge bg-label-warning me-1">Proses</span>';
+                    }
+                    if ($d['status'] == 2) {
+                      echo '<span class="badge bg-label-success me-1">Diterima</span>';
+                    }
+                    if ($d['status'] == 3) {
+                      echo '<span class="badge bg-label-primary me-1">Selesai</span>';
+                    }
+                    if ($d['status'] == 4) {
+                      echo '<span class="badge bg-label-danger me-1">Ditolak</span>';
+                    }
+
+                    ?>
+
+                  </td>
+                  <td><?= $d['nama']; ?></td>
+                  <td><?= $d['alamat']; ?></td>
+                  <td><?= $d['ditemui']; ?></td>
+                  <td><?= $d['keperluan']; ?></td>
+                  <td><?= $d['tanggal']; ?></td>
+                  <td><?= $d['masuk']; ?></td>
+                  <td><?= $d['keluar']; ?></td>
+                  <td><?= $d['telepon']; ?></td>
+                  <td><?= $d['nilai']; ?></td>
+                </tr>
+                <!-- START MODAL LIHAT FOTO -->
+                <div class="modal fade" id="modalTop<?= $d['id']; ?>" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none;" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalToggleLabel">Gambar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container">
+                          <img src="../img/<?= $d['gambar']; ?>" class="img-fluid rounded">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END MODAL LIHAT FOTO -->
+                <!-- START MODAL HAPUS -->
+                <div class="modal fade" id="hapus<?= $d['id']; ?>" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none;" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalToggleLabel"><strong><?=$d['nama'];?></strong></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container text-center">
+                          <a class="btn btn-label-secondary bg-label-secondary" data-bs-dismiss="modal" href="javascript:void(0);"><i class="bx bx-undo me-1"></i> Kembali</a>
+                          <a class="btn btn-danger" href="../data/hapus/index.php?id=<?= $d["id"]; ?>"><i class="bx bx-trash me-1"></i> Hapus</a>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END MODAL HAPUS -->
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 <!-- End Content -->
 
 <?php

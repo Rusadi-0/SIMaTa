@@ -47,6 +47,25 @@ $pilihDitemui = mysqli_query($conn, $query);
 <!-- Start Content -->
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Buku Tamu /</span> Rekam Tamu Masuk</h4>
 <div class="row">
+  <div class="col-md-6 col-lg-4 mb-3">
+    <div class="card">
+      <div class="foto" id="results">
+        <img class="card-img-top" src="../bakso/assets/img/elements/index.png" alt="Card image cap">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Kamera</h5>
+        <p class="card-text">
+        </p>
+        <form action="../unlink.php" method="post">
+          <div class="tab-pane fade show active">
+            <button type="button" id="ambil" onclick="take_snapshot()" class="btn btn-outline-primary mt-1"><i class='bx bxs-camera'></i> Ambil Gambar</button>
+            <input type="hidden" value="" name="hapusGmr" id="gambar1">
+            <button id="reset" type="submit" disabled class="btn btn-outline-danger mt-1"><i class='bx bx-reset'></i> Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <div class="col-xl col-md-6 col-lg-8">
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
@@ -59,7 +78,7 @@ $pilihDitemui = mysqli_query($conn, $query);
             <label class="form-label" for="basic-icon-default-fullname">Nama</label>
             <div class="input-group input-group-merge">
               <span class="input-group-text"><i class="bx bx-user"></i></span>
-              <input required oninput="valInput()" id="nama" name="nama" type="text" class="form-control" placeholder="John Doe" aria-label="John Doe" aria-describedby="nama">
+              <input required oninput="valInput()" autofocus id="nama" name="nama" type="text" class="form-control" placeholder="John Doe" aria-label="John Doe" aria-describedby="nama">
             </div>
           </div>
           <div class="mb-3">
@@ -107,28 +126,18 @@ $pilihDitemui = mysqli_query($conn, $query);
       </div>
     </div>
   </div>
-  <div class="col-md-6 col-lg-4 mb-3">
-    <div class="card">
-      <div class="foto" id="results">
-        <img class="card-img-top" src="../bakso/assets/img/elements/index.png" alt="Card image cap">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Kamera</h5>
-        <p class="card-text">
-        </p>
-        <form action="../unlink.php" method="post">
-          <div class="tab-pane fade show active">
-            <button type="button" id="ambil" onclick="take_snapshot()" class="btn btn-outline-primary mt-1"><i class='bx bxs-camera'></i> Ambil Gambar</button>
-            <input type="hidden" value="" name="hapusGmr" id="gambar1">
-            <button id="reset" type="submit" disabled class="btn btn-outline-danger mt-1"><i class='bx bx-reset'></i> Reset</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>
 </div>
 <!-- End Content -->
+<!-- <script>
+  document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 116) {
+      // document.location.href = "../unlink.php";
+      alert("no f5");
+    };
+  };
+</script> -->
 <script src="../webcamjs/webcam.min.js"></script>
 <script src="../bakso/assets/js/js_me/script.js"></script>
 

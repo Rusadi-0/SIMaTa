@@ -78,3 +78,5 @@ Webcam.set({
       document.getElementById('reset').disabled = false;
     };
   };
+
+

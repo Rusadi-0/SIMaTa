@@ -1,8 +1,7 @@
 <?php
-$home = "";
-$rekam = "active";
-$data = "";
-$bukuTamu = "active open";
+$title = "Rekam Tamu Masuk";
+$titleMenu = "Buku Tamu";
+
 
 require '../functions.php';
 require '../layouts/header.php';
@@ -15,7 +14,68 @@ if (!isset($_SESSION["login"])) {
   exit;
 }
 echo $layoutHeader;
-echo $layoutMenu;
+// sql menu
+$qMenu = "SELECT * FROM `tb_menu`";
+$menu = mysqli_query($conn, $qMenu);
+
+// sql sub menu
+$qSubMenu = "SELECT * FROM `tb_subMenu`";
+$subMenu = mysqli_query($conn, $qSubMenu);
+?>
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo">
+    <a href="../dashboard/" class="app-brand-link">
+      <i style="font-size: 35px;" class="bx bxs-book-reader app-brand-logo demo"></i>
+      <span class="app-brand-text demo menu-text fw-bolder ms-2">SIMa<span class="text-primary">Ta</span></span>
+    </a>
+
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
+  <div class="menu-inner-shadow"></div>
+  <ul class="menu-inner py-1">
+    <?php foreach ($menu as $m) : ?>
+      <?php if ($m['line'] != NULL) : ?>
+        <li class="menu-header small text-uppercase">
+          <span class="menu-header-text"><?= $m['line']; ?></span>
+        </li>
+      <?php endif; ?>
+      <li class="menu-item <?php if ($title == $m['menu']) {
+                              echo "active open";
+                            }
+                            elseif($titleMenu == $m['menu']){
+                              echo "active open";
+                            }
+                             ?>">
+        <a href="../<?php if ($m['sub'] == 1) {
+                      echo "javascript:void(0);";
+                    } else {
+                      echo $m['url'];
+                    }; ?>" class="menu-link <?php if ($m['sub'] == 1) {
+                                              echo "menu-toggle";
+                                            } ?>">
+          <i class="menu-icon tf-icons <?= $m['icon']; ?>"></i>
+          <div data-i18n="<?= $m['menu']; ?>"><?= $m['menu']; ?></div>
+        </a>
+        <?php if ($m['sub'] == 1) : ?>
+          <ul class="menu-sub">
+            <?php foreach ($subMenu as $s) : ?>
+              <li class="menu-item <?php if ($title == $s['subMenu']) {
+                                      echo "active";
+                                    } ?>">
+                <a href="../<?= $s['url']; ?>" class="menu-link">
+                  <div data-i18n="Input"><?= $s['subMenu']; ?></div>
+                </a>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        <?php endif; ?>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+</aside>
+<?php
 echo $layoutTopbar;
 
 if (isset($_POST["submit"])) {
@@ -26,7 +86,7 @@ if (isset($_POST["submit"])) {
     echo "
     <script>
       alert('data berhasil ditambahkan!');
-      document.location.href = '../rekam';
+      document.location.href = '../data';
     </script>
   ";
   } else {
@@ -40,12 +100,13 @@ if (isset($_POST["submit"])) {
 }
 
 
-$query = "SELECT * FROM `tb_ditemui`;";
-$pilihDitemui = mysqli_query($conn, $query);
+$qUser = "SELECT * FROM `tb_user`;";
+$user = mysqli_query($conn, $qUser);
 ?>
 <div style="position: fixed;z-index:9;top: -999999999999px;left:-999999999px;" class="mb-3 foto img-fluid" id="my_camera"></div>
+<!-- <div style="position: fixed;z-index:9;top: 160px;left:600px;" class="mb-3 foto img-fluid" id="my_camera"></div> -->
 <!-- Start Content -->
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Buku Tamu /</span> Rekam Tamu Masuk</h4>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Buku Tamu /</span> <?= $title; ?></h4>
 <div class="row">
   <div class="col-md-6 col-lg-4 mb-3">
     <div class="card">
@@ -56,7 +117,7 @@ $pilihDitemui = mysqli_query($conn, $query);
         <h5 class="card-title">Kamera</h5>
         <p class="card-text">
         </p>
-        <form action="../unlink.php" method="post">
+        <form action="../unRekam.php" method="post">
           <div class="tab-pane fade show active">
             <button type="button" id="ambil" onclick="take_snapshot()" class="btn btn-outline-primary mt-1"><i class='bx bxs-camera'></i> Ambil Gambar</button>
             <input type="hidden" value="" name="hapusGmr" id="gambar1">
@@ -95,8 +156,10 @@ $pilihDitemui = mysqli_query($conn, $query);
                 <select name="ditemui" required oninput="valInput()" id="ditemui" class="form-select" aria-label="Default select example">
                   <span class="input-group-text"><i class="bx bx-buildings"></i></span>
                   <option selected="" value=""> - pilih - </option>
-                  <?php foreach ($pilihDitemui as $pt) : ?>
-                    <option value="<?= $pt['nama']; ?>"><?= $pt['jabatan']; ?></option>
+                  <?php foreach ($user as $u) : ?>
+                    <?php if($u['role'] > 2):?>
+                    <option value="<?= $u['id']; ?>"><?= $u['jabatan']; ?></option>
+                    <?endif;?>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -127,18 +190,18 @@ $pilihDitemui = mysqli_query($conn, $query);
     </div>
   </div>
 </div>
-</div>
 <!-- End Content -->
 <!-- <script>
   document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode == 116) {
-      // document.location.href = "../unlink.php";
+      // document.location.href = "../unRekam.php";
       alert("no f5");
     };
   };
 </script> -->
 <script src="../webcamjs/webcam.min.js"></script>
+<script src="../bakso/assets/js/js_me/webcam.js"></script>
 <script src="../bakso/assets/js/js_me/script.js"></script>
 
 <?php

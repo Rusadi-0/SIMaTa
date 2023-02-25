@@ -9,14 +9,19 @@ $layoutFooter = '
        <div class="mb-2 mb-md-0">
          ©
          <script>
-           document.write(new Date().getFullYear());
-         </script>
+          if(new Date().getFullYear() == 2023){
+          document.write(new Date().getFullYear());
+          } else {
+           document.write("2023 - " + new Date().getFullYear());
+          }
+          </script>
          , made with ❤️ by
          <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
        </div>
        <div>
          <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
          <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+         <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template-free/html/" target="_blank" class="footer-link me-4">Demo free</a>
 
          <a
            href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"

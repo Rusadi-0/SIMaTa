@@ -10,7 +10,7 @@ $layoutHeader = '
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>SIMaTa | Home</title>
+  <title>SIMaTa | ' . $title . '</title>
 
   <meta name="description" content="" />
 
@@ -56,12 +56,22 @@ $layoutHeader = '
   
   <script>
   $(document).ready(function () {
-    $("#myTable").DataTable({
-        pagingType: "numbers",
-        scrollY: 300,
-        scrollX: true,
+    var table = $("#myTable").DataTable({
+        "language":{
+          "url":"../bakso/id.json"
+        },
+        pagingType: "first_last_numbers",
+        scrollY: "400",
+        scrollX: false,
         paging: true,
+        order: [[1,"decs"]],
+        dom: "Bfrtip",
+        buttons: [{ 
+          extend: "pdf",
+          className: "btn-danger"
+        }]
       });
+      new $.fn.dataTable.FixedColumns( table );
     });
 </script>
 </head>

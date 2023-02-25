@@ -7,18 +7,14 @@ if (!isset($_SESSION["login"])) {
 }
 
 $url = $_SERVER['DOCUMENT_ROOT'];
-
-unlink($url . "/img/" . $_POST["hapusGmr"]);
-
 require  $url . '/functions.php';
 
 $id = $_GET["id"];
 
-$query = "DELETE FROM `tb_tamu` WHERE `tb_tamu`.`id` = $id";
+$query = "DELETE FROM `tb_user` WHERE `tb_user`.`id` = $id";
 
 mysqli_query($conn, $query);
 
 mysqli_close($conn);
-
 
 header('Location: ../'); 

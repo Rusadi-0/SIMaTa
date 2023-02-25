@@ -46,22 +46,6 @@ function nilai($data){
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);	
-
-	// --------------------------------
-	// global $conn;
-
-
-	// $keluar = htmlspecialchars($data["keluar"]);
-	// $nilai = htmlspecialchars($data["nilai"]);
-
-
-	// $query = "INSERT INTO tb_tamu
-	// 			VALUES
-	// 		  ('', '', '', '', '', '', '', '$keluar','','','$nilai')
-	// 		";
-	// mysqli_query($conn, $query);
-	
-	// return mysqli_affected_rows($conn);
 }
 
 function tambah($data) {
@@ -80,69 +64,26 @@ function tambah($data) {
 	// $telepon = htmlspecialchars($data["telepon"]);
 	// $nilai = htmlspecialchars($data["nilai"]);
 
-
-
-
-
-
-	// // upload gambar
-	// $gambar = upload();
-	// if( !$gambar ) {
-	// 	return false;
-	// }
-
 	$query = "INSERT INTO `tb_tamu` (`id`, `nama`, `alamat`, `ditemui`, `keperluan`, `tanggal`, `masuk`, `keluar`, `gambar`, `telepon`, `nilai`, `status`) VALUES 
 									(NULL, '$nama', '$alamat', '$ditemui', '$keperluan', '$tanggal', '$masuk', NULL, '$gambar', NULL, NULL,'$status');";
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);
 }
+function tambahKaryawan($data) {
+	global $conn;
 
+	$nama = htmlspecialchars($data["nama"]);
+	$role = 4;
+	$jabatan = htmlspecialchars($data["jabatan"]);
+	$nip = htmlspecialchars($data["nip"]);
+	$time = time();
 
-// function upload() {
+	$query = "INSERT INTO `tb_user` (`id`, `role`, `nama`, `username`, `password`, `jabatan`, `nip`, `image`, `time`) VALUES (NULL, '$role', '$nama', NULL, NULL, '$jabatan', '$nip', NULL, '$time');";
+	mysqli_query($conn, $query);
 
-// 	$namaFile = $_FILES['gambar']['name'];
-// 	$ukuranFile = $_FILES['gambar']['size'];
-// 	$error = $_FILES['gambar']['error'];
-// 	$tmpName = $_FILES['gambar']['tmp_name'];
-
-// 	// cek apakah tidak ada gambar yang diupload
-// 	if( $error === 4 ) {
-// 		echo "<script>
-// 				alert('pilih gambar terlebih dahulu!');
-// 			  </script>";
-// 		return false;
-// 	}
-
-// 	// cek apakah yang diupload adalah gambar
-// 	$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-// 	$ekstensiGambar = explode('.', $namaFile);
-// 	$ekstensiGambar = strtolower(end($ekstensiGambar));
-// 	if( !in_array($ekstensiGambar, $ekstensiGambarValid) ) {
-// 		echo "<script>
-// 				alert('yang anda upload bukan gambar!');
-// 			  </script>";
-// 		return false;
-// 	}
-
-// 	// cek jika ukurannya terlalu besar
-// 	if( $ukuranFile > 1000000 ) {
-// 		echo "<script>
-// 				alert('ukuran gambar terlalu besar!');
-// 			  </script>";
-// 		return false;
-// 	}
-
-// 	// lolos pengecekan, gambar siap diupload
-// 	// generate nama gambar baru
-// 	$namaFileBaru = uniqid();
-// 	$namaFileBaru .= '.';
-// 	$namaFileBaru .= $ekstensiGambar;
-
-// 	move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
-
-// 	return $namaFileBaru;
-// }
+	return mysqli_affected_rows($conn);
+}
 
 
 function hapusUser($id)

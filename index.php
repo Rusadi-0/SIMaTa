@@ -18,7 +18,7 @@ if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
 }
 
 if (isset($_SESSION["login"])) {
-  header("Location: ./home");
+  header("Location: ./dashboard");
   exit;
 }
 
@@ -47,7 +47,7 @@ if (isset($_POST["login"])) {
         setcookie('key', hash('sha256', $row['username']), time() + $waktuRemember);
       }
 
-      header("Location: ./home");
+      header("Location: ./dashboard");
       exit;
     }
   }
